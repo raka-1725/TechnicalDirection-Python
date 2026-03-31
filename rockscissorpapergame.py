@@ -12,7 +12,7 @@ playerties = 0
 bPlaying = False
 
 def askPlayerChoice():
-    print("Rock Sissor Paper game : Choose your choice : (Rock, Scissors, Papaer)" )
+    print("Rock Sissor Paper game : Choose your choice : (Rock, Scissors, Paper)" )
     return input().strip().lower()
 
 def decideComputerChoice():

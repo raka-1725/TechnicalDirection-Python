@@ -3,13 +3,14 @@ target_stock = ["milk", "eggs"]
 walmart_stock = ["milk", "eggs"]
 heb_stock = ["milk", "eggs", "bread"]
 
-
+#print 
 print(f"You need to buy {shopping_list} from the store.")
 
+#printing out every string in the array
 for item in shopping_list:
         print(item)
 
-
+#comparing which store has the item the most and returns its name
 def winning_store(shopping_list, target_stock, walmart_stock, heb_stock):
         if shopping_list == target_stock:
                 return "Target"
@@ -20,14 +21,17 @@ def winning_store(shopping_list, target_stock, walmart_stock, heb_stock):
         else:
                 return None
 
+#ask player to go on shopping or not returns true if input is yes or Y
 def ask_to_shop():
         answer = input("Do you want to go shopping? (Y/N)").strip().lower()
         return answer in {"yes" , "y"}
 
+#get input from player
 def ask_yn(prompt):
         answer = input(prompt).strip().lower()
         return answer in {"yes", "y"}
 
+#get stock of each store and returns stock
 def get_store_stock(store_name): 
         store_name = store_name.strip().lower()
         if store_name in ("target", "t"): 
@@ -38,7 +42,8 @@ def get_store_stock(store_name):
                 return "HEB", heb_stock 
         else:
                 return None, None
-        
+
+#print prompts
 def print_winning_store(): 
         if not ask_to_shop():
                 print("ok, no shopping trip today.")
@@ -58,6 +63,6 @@ def print_winning_store():
 
                 print("Ok, let's try a different store")
 
-
+#Constrctor
 if __name__ == "__main__":
         print_winning_store()

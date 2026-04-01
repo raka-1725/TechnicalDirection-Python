@@ -18,7 +18,13 @@ def askPlayerChoice():
 def decideComputerChoice():
     cpuChoice = random.randint(1, 3)
     #instead of match, it choses from these 3
-    return random.choice(["rock", "paper", "scissors"])
+    match cpuChoice:
+        case 1:
+            return "rock"
+        case 2:
+            return "paper"
+        case 3:
+            return "scissors"
 
 def battle():
     global playerwins, playerLoses, playerties

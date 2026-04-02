@@ -3,15 +3,13 @@
 
 
 
-
+#replace with empty for letters that returned as true
 def remove_vowels(input_str):
-    new_string = input_str
-    for x in input_str:
-        if is_vowel(x):
-            x.replace(f"{x}", "")
+    return "".join(x for x in input_str if not is_vowel(x))
 
     return new_string
 
+#return false if the letter is vowel
 def is_vowel(letter):
 
     if letter == 'a':
@@ -29,12 +27,14 @@ def is_vowel(letter):
 
 def main():
     while True:
-        stones = input("Input stones : Q to quit").strip()
-        if stones in "Q" : 
+        #q to quit
+        input_str = input("Input string (Q to quit): ").strip()
+        if input_str == "Q":
             break
-        result = check_stone(stones, jewels)
+        #gets removed string
+        result = remove_vowels(input_str)
+        print("Result:", result)
 
-        print(f"You have {result} jewels in your stones")
 
 
 if __name__ == "__main__":

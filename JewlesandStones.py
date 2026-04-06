@@ -2,10 +2,6 @@
 #find jewel letter from stone string
 #ex: aaBBBaAA -> Jewel->aA : output 3
 
-#jewels
-
-jewels = "Abtj"
-
 # check each letter will match in the jewels using two for loops
 def check_stone(stone, jewels):
     hitresult = 0
@@ -22,6 +18,7 @@ def main():
     while True:
         #Q to quit loop
         stones = input("Input stones : Q to quit").strip()
+        jewels = input("Input jewels : Q to quit").strip()
         if stones in "Q" : 
             break
         #get result of checking stone

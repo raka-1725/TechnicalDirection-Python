@@ -12,7 +12,7 @@ def remove_vowels(input_str):
 
 #return false if the letter is vowel
 def is_vowel(letter):
-    #check if the letter is vowel
+    #check if the letter is vowel, checking by converting them into lowercase
     return letter.lower() in "aeiou"
 
 def main():

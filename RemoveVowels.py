@@ -5,25 +5,15 @@
 
 #replace with empty for letters that returned as true
 def remove_vowels(input_str):
+    #replace empty if it is vowel
     return "".join(x for x in input_str if not is_vowel(x))
 
     return new_string
 
 #return false if the letter is vowel
 def is_vowel(letter):
-
-    if letter == 'a':
-        return True
-    elif letter == 'e':
-        return True
-    elif letter == 'i':
-        return True
-    elif letter == 'o':
-        return True
-    elif letter == 'u':
-        return True
-    else:
-        return False
+    #check if the letter is vowel
+    return letter.lower() in "aeiou"
 
 def main():
     while True:

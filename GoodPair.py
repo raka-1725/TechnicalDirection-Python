@@ -15,7 +15,7 @@ def is_good_pair(input):
 
 def main():
     while True:
-        inputNums = input("Input the array")
+        inputNums = input("Input the array ")
 
         #split array from string to array
         nums = [int(x) for x in inputNums.split()]

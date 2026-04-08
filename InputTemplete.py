@@ -2,7 +2,7 @@
 def main():
     while True:
         #Q to quit loop
-        inputNum = input("Input numbers to devide by each digits: Q to quit").strip()
+        inputNum = input("Input numbers : Q to quit").strip()
         if inputNum in "Q" : 
             break
 

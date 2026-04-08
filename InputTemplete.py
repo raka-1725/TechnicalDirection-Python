@@ -11,7 +11,7 @@ def main():
 if __name__ == "__main__":
     main()
 
-
+#---------------------------------------------------------------------------
 
     inputArr = [int(x) for x in inputNumsstr.split()]
     #getting the midpoint

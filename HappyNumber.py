@@ -22,6 +22,7 @@ def is_happy(n):
     while n != 1 and n not in seen:
         seen.add(n)
         n = get_sum_square(n)
+    return n == 1
 
 def happy_num_calc(n):
      
@@ -46,7 +47,7 @@ def main():
             print("Please enter valid numbers.")
             continue
         
-        print(f"Is {inputNum} happy number? : {happy_num(inputNum)}")
+        #print(f"Is {inputNum} happy number? : {is_happy(inputNum)}")
 
 if __name__ == "__main__":
     main()

@@ -4,19 +4,61 @@
 #4. Comments on each function/clas
 
 
-class Date:
-    def __init__(self, year, month, day):
-        self.years = year
-        self.month = month
-        self.day = day
+class DateCalculator:
+    def __init__(self):
+        self.year = 0
+        self.month = 0
+        self.day = 0
 
     def __str__(self):
-        return f"{self.years} {self.month} {self.day}"
+        return f"{self.year} / {self.month} / {self.day}"
+
     
-def GetDiff(Date_Initial, Date_Target):
-    day_diff = 0
-    month_diff = 0
-    year_diff = 0
+    def addDates(self, yearToAdd, monthToAdd, dayToAdd):
+        print(yearToAdd, monthToAdd, dayToAdd)
+        #add years
+        self.year += yearToAdd
+
+        #add month (12 > to increment year)
+        self.month += monthToAdd
+
+        while self.month > 12:
+            self.month -= 12
+            self.year += 1
+
+        self.day += dayToAdd
+        while True:
+            #31 days
+            if self.month in 1 or 3 or 5 or 7 or 8 or 10 or 12:
+                while self.day > 31:
+                    self.day -= 31
+                    self.month += 1
+            elif self.month == 4 or 6 or 9 or 11:
+                while self.day > 30:
+                    self.day - 30
+                    self.month += 1
+            else:
+                if self.year % 4 == 0:
+                    while self.day > 29:
+                        self.day - 29
+                        self.month += 1 
+                else:
+                    while self.day > 28:
+                        self.day - 28
+                        self.month += 1 
+
+            if self.month > 12:
+                self.month = 1
+                self.year += 1
+            else:
+                break
+
+    def printResult(self):
+        print("=== Result Date ====")
+
+        print(f"\n{self.year:04d} / {self.month:02d} / {self.day:02d}") 
+        
+    
 
     
 
@@ -27,16 +69,32 @@ def main():
     print("=== Calender Calculator ===\n")
 
     while True:
-
+        dateCalc = DateCalculator()
         initial_month, initial_day, initial_year = input("Input Starting Date in MMDDYY format | eg: 04 15 2026\n").strip().split()
-        Initial_date = Date(initial_year, initial_month, initial_day)
 
-        print(f"Inital date : {Initial_date}")
+        dateCalc.year = initial_year
+        dateCalc.month = initial_month
+        dateCalc.day = initial_day
 
-        target_month, target_day, target_year = input("\nInput Target Date in MMDDYY format | eg: 04 15 2026\n").strip().split()
-        Target_date = Date(target_year, target_month, target_day)
+        print(dateCalc)
 
-        print(f"Target date : {Target_date}")
+        print("\n==== Add ====")
+        print("Adding offset: ")
+        #try:
+        year_offset = int(input("Input year offset : ")) or 0
+        month_offset = int(input("Input month offset : ")) or 0
+        day_offset = int(input("Input day offset : ")) or 0
+
+        dateCalc.addDates(year_offset, month_offset, day_offset)
+
+        dateCalc.printResult()
+
+        calcAgain = input("Would you like to calculate again? (y/n)").strip().lower()
+        if calcAgain is not "y":
+            print("Quitting...")
+            break
+        #except:
+            print("Invalid Input!")
 
 
 if __name__ == "__main__":

@@ -4,7 +4,7 @@
 #4. Comments on each function/clas
 
 
-class date:
+class Date:
     def __init__(self, year, month, day):
         self.years = year
         self.month = month
@@ -13,12 +13,32 @@ class date:
     def __str__(self):
         return f"{self.years} {self.month} {self.day}"
     
+def GetDiff(Date_Initial, Date_Target):
+    day_diff = 0
+    month_diff = 0
+    year_diff = 0
+
+    
+
+
+
 
 def main():
     print("=== Calender Calculator ===\n")
 
     while True:
 
-        initial_month, initial_date, initial_year = input("\nInput Starting Date in MMDDYY format | eg: APR 15 2026").strip().split()
-        
+        initial_month, initial_day, initial_year = input("Input Starting Date in MMDDYY format | eg: 04 15 2026\n").strip().split()
+        Initial_date = Date(initial_year, initial_month, initial_day)
+
+        print(f"Inital date : {Initial_date}")
+
+        target_month, target_day, target_year = input("\nInput Target Date in MMDDYY format | eg: 04 15 2026\n").strip().split()
+        Target_date = Date(target_year, target_month, target_day)
+
+        print(f"Target date : {Target_date}")
+
+
+if __name__ == "__main__":
+    main()
 

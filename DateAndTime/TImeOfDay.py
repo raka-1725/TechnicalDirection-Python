@@ -19,4 +19,6 @@ def main():
 
     while True:
 
-        initial_date = input("\nInput Starting Date in MMDDYY format | eg: APR 15 2026").strip()
+        initial_month, initial_date, initial_year = input("\nInput Starting Date in MMDDYY format | eg: APR 15 2026").strip().split()
+        
+

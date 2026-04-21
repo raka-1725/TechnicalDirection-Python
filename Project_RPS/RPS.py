@@ -76,8 +76,43 @@ def printcurrentscore():
     print(f"Wins  | {playerwins}")
     print(f"Loses | {playerLoses}")
 
+class RSPWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Rock Paper Scissors game")
+        self.setMinimumWidth(500)
+
+
+        central = QWidget()
+        self.setCentralWidget(central)
+        layout = QVBoxLayout(central)
+
+        #player input button
+        btn_row = QHBoxLayout()
+        self.rock_btn = QPushButton("Rock")
+        #send player input in str
+        self.paper_btn = QPushButton("Paper")
+        self.scissors_btn = QPushButton("Scissors")
+        btn_row.addWidget(self.rock_btn)
+        btn_row.addWidget(self.paper_btn)
+        btn_row.addWidget(self.scissors_btn)
+        layout.addLayout(btn_row)
+
+
+
+
+
+
+
+
+
 
 if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = RSPWindow()
+    window.show()
+    sys.exit(app.exec())
+    '''
         bPlaying = True
         while(bPlaying):
             playerInput = askPlayerChoice()
@@ -86,6 +121,7 @@ if __name__ == "__main__":
             print("Type Q to stop game, C to continue game")
             if input().lower() == "q":
                 bPlaying = False
+    '''
 
 
         

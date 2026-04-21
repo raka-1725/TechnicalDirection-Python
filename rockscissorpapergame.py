@@ -1,4 +1,9 @@
 import random
+import sys 
+from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QSpinBox, QPushButton, QTextEdit
+
+#show score on textbox
+
 
 #score keeper for extra credit
 
@@ -78,6 +83,12 @@ def printcurrentscore():
     print(f"Wins  | {playerwins}")
     print(f"Loses | {playerLoses}")
 
+
+class RPSgameWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Rock Paper Scissors")
+    
 
 if __name__ == "__main__":
         bPlaying = True

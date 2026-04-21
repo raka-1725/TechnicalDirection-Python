@@ -1,4 +1,5 @@
 import random
+import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QSpinBox, QPushButton, QTextEdit
 
 #score keeper for extra credit
@@ -19,12 +20,11 @@ def askPlayerChoice():
 def decideComputerChoice():
     cpuChoice = random.randint(1, 3)
     #instead of match, it choses from these 3
-    match cpuChoice:
-        case 1:
+    if cpuChoice == 1:
             return "rock"
-        case 2:
+    if cpuChoice == 2:
             return "paper"
-        case 3:
+    if cpuChoice == 3:
             return "scissors"
 
 def battle():
@@ -32,43 +32,40 @@ def battle():
 
     computerChoice = decideComputerChoice()
     if computerChoice == "rock":
-        match playerInput:
-            case "rock":
+        if playerInput == "rock":
                 playerties += 1
                 print(f"You tied! : Ties {playerties}")
-            case "scissors":
+        elif playerInput == "scissors":
                 playerLoses += 1
                 print(f"You Lost! : Loses {playerLoses}")
-            case "paper":
+        elif playerInput == "paper":
                 playerwins += 1
                 print(f"You won! : Wins {playerwins}")
-            case _:
+        else:
                 print("")
     elif computerChoice == "scissors":
-        match playerInput:
-            case "scissors":
+        if playerInput == "scissors":
                 playerties += 1
                 print(f"You tied! : Ties {playerties}")
-            case "paper":
+        elif playerInput == "paper":
                 playerLoses += 1
                 print(f"You Lost! : Loses {playerLoses}")
-            case "rock":
+        elif playerInput == "rock":
                 playerwins += 1
                 print(f"You won! : Wins {playerwins}")
-            case _:
+        else:
                 print("")
     elif computerChoice == "paper":
-        match playerInput:
-            case "scissors":
+        if playerInput == "scissors":
                 playerties += 1
                 print(f"You tied! : Ties {playerties}")
-            case "paper":
+        elif playerInput == "paper":
                 playerLoses += 1
                 print(f"You Lost! : Loses {playerLoses}")
-            case "rock":
+        elif playerInput ==  "rock":
                 playerwins += 1
                 print(f"You won! : Wins {playerwins}")
-            case _:
+        else:
                 print("")
     else:
         print("")

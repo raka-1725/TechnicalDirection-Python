@@ -34,69 +34,102 @@ def battle():
     if computerChoice == "rock":
         if playerInput == "rock":
                 playerties += 1
-                print(f"You tied! : Ties {playerties}")
+                return(f"CPU choice : {computerChoice} \nYou tied! : Ties {playerties}")
         elif playerInput == "scissors":
                 playerLoses += 1
-                print(f"You Lost! : Loses {playerLoses}")
+                return(f"CPU choice : {computerChoice} \nYou Lost! : Loses {playerLoses}")
         elif playerInput == "paper":
                 playerwins += 1
-                print(f"You won! : Wins {playerwins}")
+                return(f"CPU choice : {computerChoice} \nYou won! : Wins {playerwins}")
         else:
-                print("")
+                return("")
     elif computerChoice == "scissors":
         if playerInput == "scissors":
                 playerties += 1
-                print(f"You tied! : Ties {playerties}")
+                return(f"CPU choice : {computerChoice} \nYou tied! : Ties {playerties}")
         elif playerInput == "paper":
                 playerLoses += 1
-                print(f"You Lost! : Loses {playerLoses}")
+                return(f"CPU choice : {computerChoice} \nYou Lost! : Loses {playerLoses}")
         elif playerInput == "rock":
                 playerwins += 1
-                print(f"You won! : Wins {playerwins}")
+                return(f"CPU choice : {computerChoice} \nYou won! : Wins {playerwins}")
         else:
-                print("")
+                return("")
     elif computerChoice == "paper":
         if playerInput == "scissors":
                 playerties += 1
-                print(f"You tied! : Ties {playerties}")
+                return(f"CPU choice : {computerChoice} \nYou tied! : Ties {playerties}")
         elif playerInput == "paper":
                 playerLoses += 1
-                print(f"You Lost! : Loses {playerLoses}")
+                return(f"CPU choice : {computerChoice} \nYou Lost! : Loses {playerLoses}")
         elif playerInput ==  "rock":
                 playerwins += 1
-                print(f"You won! : Wins {playerwins}")
+                return(f"CPU choice : {computerChoice} \nYou won! : Wins {playerwins}")
         else:
-                print("")
+                return("")
     else:
-        print("")
+        return("")
 
 
 def printcurrentscore():
-    print(f"Ties  | {playerties}")
-    print(f"Wins  | {playerwins}")
-    print(f"Loses | {playerLoses}")
+    return(f"Ties  | {playerties} \n Wins  | {playerwins} \n Loses | {playerLoses}")
+
 
 class RSPWindow(QMainWindow):
-    def __init__(self):
-        super().__init__()
-        self.setWindowTitle("Rock Paper Scissors game")
-        self.setMinimumWidth(500)
+        def __init__(self):
+                super().__init__()
+                self.setWindowTitle("Rock Paper Scissors game")
+                self.setMinimumWidth(500)
 
 
-        central = QWidget()
-        self.setCentralWidget(central)
-        layout = QVBoxLayout(central)
+                central = QWidget()
+                self.setCentralWidget(central)
+                layout = QVBoxLayout(central)
 
-        #player input button
-        btn_row = QHBoxLayout()
-        self.rock_btn = QPushButton("Rock")
-        #send player input in str
-        self.paper_btn = QPushButton("Paper")
-        self.scissors_btn = QPushButton("Scissors")
-        btn_row.addWidget(self.rock_btn)
-        btn_row.addWidget(self.paper_btn)
-        btn_row.addWidget(self.scissors_btn)
-        layout.addLayout(btn_row)
+                #player input button
+                btn_row = QHBoxLayout()
+                self.rock_btn = QPushButton("Rock")
+                self.rock_btn.clicked.connect(self.send_rock)
+                self.paper_btn = QPushButton("Paper")
+                self.paper_btn.clicked.connect(self.send_paper)
+                self.scissors_btn = QPushButton("Scissors")
+                self.scissors_btn.clicked.connect(self.send_scissors)
+                btn_row.addWidget(self.rock_btn)
+                btn_row.addWidget(self.paper_btn)
+                btn_row.addWidget(self.scissors_btn)
+                layout.addLayout(btn_row)
+
+                #output
+                layout.addWidget(QLabel("Result : "))
+                self.output = QTextEdit()
+                self.output.setReadOnly(True)
+                self.output.setPlaceholderText("Game Result : ")
+                layout.addWidget(self.output)
+
+
+                self.output.append("=== Rock Paper Scissors Game === \nPress your choice")
+
+        def send_rock(self):
+               global playerInput
+               playerInput = "rock"
+               self.display_result(playerInput)
+        def send_paper(self):
+               global playerInput
+               playerInput = "paper"
+               self.display_result(playerInput)
+        def send_scissors(self):
+               global playerInput
+               playerInput = "scissors"
+               self.display_result(playerInput)
+
+
+        
+        def display_result(self, choice):
+               global playerInput
+               playerInput = choice
+               self.output.append(f"Your choice : {playerInput}")
+               self.output.append(battle())
+               self.output.append(printcurrentscore())
 
 
 
@@ -112,16 +145,6 @@ if __name__ == "__main__":
     window = RSPWindow()
     window.show()
     sys.exit(app.exec())
-    '''
-        bPlaying = True
-        while(bPlaying):
-            playerInput = askPlayerChoice()
-            battle()
-            printcurrentscore()
-            print("Type Q to stop game, C to continue game")
-            if input().lower() == "q":
-                bPlaying = False
-    '''
 
 
         

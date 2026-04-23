@@ -77,9 +77,9 @@ class TwoSum(QMainWindow):
         self.output.append("=== Two Sum Finder ===")
 
     def do_calc(self):
-        InputStr = self.InputArray.toPlainText().strip()
         try:
-            InputArr = [int(x) for x in InputStr.split()]
+            InputStr = self.InputArray.toPlainText().replace(',', ' ').strip()
+            InputArr = [int(x) for x in InputStr.split() if x.lstrip('-').isdigit()]
         except ValueError:
             self.output.append("Please enter valid numbers.")
         Target = int(self.InputTarget.toPlainText())

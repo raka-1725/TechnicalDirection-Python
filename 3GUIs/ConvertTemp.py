@@ -2,9 +2,8 @@
 
 # fahrenheit = cel * 1.80 + 32.00
 
-
-
-
+import sys
+from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QSpinBox, QPushButton, QTextEdit
 
 #conversions
 def convert_temp_f(cdegree):
@@ -16,18 +15,17 @@ def convert_temp_k(cdegree):
 #ask user input for units
 def ask_Input(input_temp):
     unit_choice = input("Input unit f/k/b : q to quit ").strip().lower()
-    match unit_choice:
-        case 'f':
+    if unit_choice == 'f':
             print(f"{input_temp} is {convert_temp_f(input_temp)} F in Fahrenheit")
             return
-        case 'k':
+    elif unit_choice == 'k':
             print(f"{input_temp} is {convert_temp_k(input_temp)} K in Kelvin")
             return
-        case 'b':
+    elif unit_choice == 'b':
             print(f"{input_temp} is {convert_temp_f(input_temp)} F in Fahrenheit and {convert_temp_k(input_temp)} K in Kelvin")
             return
         #anything besides fkb will fall here and return None
-        case _:
+    else :
             return
 #main loop breaks when user inpiuts q
 def main():

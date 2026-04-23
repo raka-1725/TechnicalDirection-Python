@@ -35,8 +35,59 @@ def main():
             break
         ask_Input(input_temp)
 
+
+
+class ConvertTemp(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Temperature Converter")
+        self.setMinimumWidth(500)
+
+        central = QWidget()
+        self.setCentralWidget(central)
+        layout = QVBoxLayout(central)
+
+        #Input box
+        layout.addWidget(QLabel("Input : "))
+        self.Input = QTextEdit()
+        self.Input.setMaximumHeight(50)
+        self.Input.setPlaceholderText("Input Temperature here : ")
+        layout.addWidget(self.Input)
+
+        #buttons
+        layout.addWidget(QLabel("Convert to : "))
+        btn_row = QHBoxLayout()
+        self.fah_btn = QPushButton("Fahrenheit")
+        self.fah_btn.clicked.connect(self.do_convert_f)
+        btn_row.addWidget(self.fah_btn)
+        self.kel_btn = QPushButton("Kelvin")
+        self.kel_btn.clicked.connect(self.do_convert_k)
+        btn_row.addWidget(self.kel_btn)
+        layout.addLayout(btn_row)
+
+
+        #output
+        layout.addWidget(QLabel("Result :"))
+        self.output = QTextEdit()
+        self.output.setReadOnly(True)
+        self.output.setPlaceholderText("Convert result : ")
+        layout.addWidget(self.output)
+
+        self.output.append("=== Temperature Converter ===")
         
+    def do_convert_f(self):
+        tempInput = float(self.Input.toPlainText())
+        result = convert_temp_f(tempInput)
+        self.output.append(f"{tempInput} C in Celcius is {result} F in Fahrenheit.")
+
+    def do_convert_k(self):
+        tempInput = float(self.Input.toPlainText())
+        result = convert_temp_k(tempInput)
+        self.output.append(f"{tempInput} C in Celcius is {result} K in Kelvin.")
 
 
 if __name__ == "__main__":
-    main()
+    app = QApplication(sys.argv)
+    window = ConvertTemp()
+    window.show()
+    sys.exit(app.exec())

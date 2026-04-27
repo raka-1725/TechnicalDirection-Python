@@ -39,10 +39,12 @@ def main():
 
 class ConvertTemp(QMainWindow):
     def __init__(self):
+        #initilize
         super().__init__()
         self.setWindowTitle("Temperature Converter")
         self.setMinimumWidth(500)
 
+        #layout
         central = QWidget()
         self.setCentralWidget(central)
         layout = QVBoxLayout(central)
@@ -74,13 +76,16 @@ class ConvertTemp(QMainWindow):
         layout.addWidget(self.output)
 
         self.output.append("=== Temperature Converter ===")
-        
+    
+    #convert to F
     def do_convert_f(self):
+        #convert to float
         tempInput = float(self.Input.toPlainText())
         result = convert_temp_f(tempInput)
         self.output.append(f"{tempInput} C in Celcius is {result} F in Fahrenheit.")
-
+    #convert to K
     def do_convert_k(self):
+        #convert to float
         tempInput = float(self.Input.toPlainText())
         result = convert_temp_k(tempInput)
         self.output.append(f"{tempInput} C in Celcius is {result} K in Kelvin.")

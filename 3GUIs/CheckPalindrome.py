@@ -18,10 +18,14 @@ def main():
 
 class PalindromeWindow(QMainWindow):
     def __init__(self):
+        #initilize
         super().__init__()
+        #title
         self.setWindowTitle("Palindrome Checker")
+        #window width
         self.setMinimumWidth(500)
 
+        #setting layout
         central = QWidget()
         self.setCentralWidget(central)
         layout = QVBoxLayout(central)
@@ -49,9 +53,12 @@ class PalindromeWindow(QMainWindow):
         self.check_btn.clicked.connect(self.check_palindrome)
 
     def check_palindrome(self):
-        text = self.Input.toPlainText()
+        #getting input from input box
+        text = self.Input.toPlainText().lower()
+        #check palindrome
         result = is_Palindrome(text)
 
+        #output using boolean return
         if result == True:
             self.Output.append(f"{text} is Palindrome")
         else:

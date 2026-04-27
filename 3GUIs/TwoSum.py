@@ -41,10 +41,11 @@ def main():
 
 class TwoSum(QMainWindow):
     def __init__(self):
+        #initilization
         super().__init__()
         self.setWindowTitle("Sum Finder")
         self.setMinimumWidth(500)
-
+        #layout
         central = QWidget()
         self.setCentralWidget(central)
         layout = QVBoxLayout(central)
@@ -55,7 +56,8 @@ class TwoSum(QMainWindow):
         self.InputArray.setMaximumHeight(50)
         self.InputArray.setPlaceholderText("Input Array here : ")
         layout.addWidget(self.InputArray)
-
+        
+        #Input box for Target
         layout.addWidget(QLabel("Target : "))
         self.InputTarget = QTextEdit()
         self.InputTarget.setMaximumHeight(50)
@@ -77,11 +79,13 @@ class TwoSum(QMainWindow):
         self.output.append("=== Two Sum Finder ===")
 
     def do_calc(self):
+        #try splitting input into array
         try:
             InputStr = self.InputArray.toPlainText().replace(',', ' ').strip()
             InputArr = [int(x) for x in InputStr.split() if x.lstrip('-').isdigit()]
         except ValueError:
             self.output.append("Please enter valid numbers.")
+        #convert target into int
         Target = int(self.InputTarget.toPlainText())
         result = find_target(InputArr, int(Target))
 
